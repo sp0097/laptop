@@ -6,7 +6,7 @@ fancy_echo "------- Some dependencies not managed with laptop -----------------"
 fancy_echo " * Sound Siphon"
 
 # homebrew installations
-(brew bundle --file=- <<EOF
+brew bundle --file=- <<EOF
   cask "bitwarden"
   cask "firefox"
   cask "iterm2"  
@@ -49,8 +49,7 @@ fancy_echo " * Sound Siphon"
   brew "wireguard-tools"
   brew "shellcheck"
   brew "speedtest-cli"
-
-EOF) || true
+EOF
 
 #oh my zsh
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)
