@@ -27,8 +27,8 @@ brew bundle --file=- <<EOF
   tap "thoughtbot/formulae"
   brew "rcm"
 
-  brew "mas" # Apple App Store integration
-  brew "bitwarden"
+  brew "mas"
+  brew "bitwarden-cli"
   brew "jq"
   brew "terraform"
   brew "awscli"
@@ -52,7 +52,7 @@ brew bundle --file=- <<EOF
 EOF
 
 #oh my zsh
-sh -c "$(curl -fsSL https://install.ohmyz.sh/)
+sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
 
 # install Apps From App Store
 # mas search '<application name here>' | awk '{ print $1 }' | xargs mas install
