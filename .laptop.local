@@ -5,52 +5,6 @@ fancy_echo "------- Setting Up Applications, dependencies, and dotfiles -------"
 fancy_echo "------- Some dependencies not managed with laptop -----------------"
 fancy_echo " * Sound Siphon"
 
-# homebrew installations
-brew bundle --file=- <<EOF
-  cask "bitwarden"
-  cask "firefox"
-  cask "iterm2"  
-  cask "ngrok"
-  cask "rescuetime"
-  cask "spotify"
-  cask "visual-studio-code"
-  cask "flameshot"
-  cask "macvim"
-  cask "postman"
-  cask "aws-vpn-client"
-  cask "teamviewer"
-  cask "dbeaver-community"
-  cask "notion"
-  cask "sequel-ace"
-
-  # for dotfiles
-  tap "thoughtbot/formulae"
-  brew "rcm"
-
-  brew "mas" # Apple App Store integration
-  brew "bitwarden"
-  brew "jq"
-  brew "terraform"
-  brew "awscli"
-  brew "zsh-syntax-highlighting"
-  brew "openjdk@21"
-  brew "colima"
-  brew "gradle"
-  brew "npm"
-  brew "gw"
-  brew "gng"
-  brew "pyenv"
-  brew "pipenv"
-  brew "thefuck"
-  brew "jenv"
-  brew "tfenv"
-  brew "node"
-  brew "npm"
-  brew "wireguard-tools"
-  brew "shellcheck"
-  brew "speedtest-cli"
-EOF
-
 #oh my zsh
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
 
@@ -58,6 +12,7 @@ sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
 # mas search '<application name here>' | awk '{ print $1 }' | xargs mas install
 mas install 492167985 # menubarclock
 mas install 803453959 # slack
+mas install 595191960 # Copy clip
 
 # upgrade existing apps
 mas upgrade
@@ -107,3 +62,5 @@ pyenv install 3.9.7
 
 chmod +x setup_backup_cron.sh
 ./setup_backup_cron.sh
+
+fancy_echo "Setup AlDente Pro manually => https://apphousekitchen.com/installation-guide/"
