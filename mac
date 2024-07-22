@@ -211,7 +211,7 @@ install_asdf_language "nodejs"
 cd $HOME
 curl --remote-name https://raw.githubusercontent.com/sp0097/laptop/main/.laptop.local
 
-if ! [ -f "${HOME}/OneDrive - Cox Automotive" ]; then
+if [ ! -d "${HOME}/Library/CloudStorage/OneDrive-CoxAutomotive" ]; then
   fancy_echo "Need to open OneDrive and login before proceeding..."
   exit 1
 fi
