@@ -27,8 +27,8 @@ brew bundle --file=- <<EOF
   tap "thoughtbot/formulae"
   brew "rcm"
 
-  brew "mas"
-  brew "bitwarden-cli"
+  brew "mas" # Apple App Store integration
+  brew "bitwarden"
   brew "jq"
   brew "terraform"
   brew "awscli"
