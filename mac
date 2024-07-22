@@ -150,19 +150,13 @@ cask "onedrive"
 
 
 cask "bitwarden"
-cask "firefox"
-cask "iterm2"  
+
 cask "ngrok"
 cask "rescuetime"
-cask "spotify"
 cask "visual-studio-code"
-cask "flameshot"
-cask "macvim"
 cask "postman"
 cask "aws-vpn-client"
 cask "teamviewer"
-cask "dbeaver-community"
-cask "notion"
 cask "sequel-ace"
 
 # for dotfiles

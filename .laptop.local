@@ -46,6 +46,15 @@ mkdir -p projects
 mkdir -p scripts
 mkdir -p .ssh
 
+#I don't care if it's already installed, need the installation to proceed.
+brew install --cask "firefox" || true
+brew install --cask "notion" || true
+brew install --cask "dbeaver-community" || true
+brew install --cask "flameshot" || true
+brew install --cask "macvim" || true
+brew install --cask "iterm2" || true
+brew install --cask "spotify" || true
+
 #Need one drive setup before proceeding.
 #echo "zelda pw"
 cd .ssh
