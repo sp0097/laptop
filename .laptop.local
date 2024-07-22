@@ -1,0 +1,110 @@
+#!/bin/sh
+
+fancy_echo "------- Setting Up Applications, dependencies, and dotfiles -------"
+
+fancy_echo "------- Some dependencies not managed with laptop -----------------"
+fancy_echo " * Sound Siphon"
+
+# homebrew installations
+brew bundle --file=- <<EOF
+  cask "bitwarden"
+  cask "firefox"
+  cask "iterm2"  
+  cask "ngrok"
+  cask "rescuetime"
+  cask "spotify"
+  cask "visual-studio-code"
+  cask "flameshot"
+  cask "macvim"
+  cask "postman"
+  cask "aws-vpn-client"
+  cask "teamviewer"
+  cask "dbeaver-community"
+  cask "notion"
+  cask "sequel-ace"
+
+  # for dotfiles
+  tap "thoughtbot/formulae"
+  brew "rcm"
+
+  brew "mas" # Apple App Store integration
+  brew "bitwarden"
+  brew "jq"
+  brew "terraform"
+  brew "awscli"
+  brew "zsh-syntax-highlighting"
+  brew "openjdk@21"
+  brew "colima"
+  brew "gradle"
+  brew "npm"
+  brew "gw"
+  brew "gng"
+  brew "pyenv"
+  brew "pipenv"
+  brew "thefuck"
+  brew "jenv"
+  brew "tfenv"
+  brew "node"
+  brew "npm"
+  brew "wireguard-tools"
+  brew "shellcheck"
+  brew "speedtest-cli"
+
+EOF
+
+#oh my zsh
+sh -c "$(curl -fsSL https://install.ohmyz.sh/)
+
+# install Apps From App Store
+# mas search '<application name here>' | awk '{ print $1 }' | xargs mas install
+mas install 492167985 # menubarclock
+mas install 803453959 # slack
+
+# upgrade existing apps
+mas upgrade
+
+# bring in or pull from Thoughtbot's dotfiles
+if [ ! -d "$HOME/dotfiles" ]; then
+  git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+else
+  git -C ~/dotfiles pull origin master
+fi
+
+# brings in my personal dotfile prefernces
+# and keeps them current
+if [ ! -d "$HOME/dotfiles" ]; then
+  git clone git@github.com:jedschneider/dotfiles-local.git ~/dotfiles-local
+else
+  git -C ~/dotfiles-local pull origin master
+fi
+
+# source dotfiles
+env RCRC=$HOME/dotfiles/rcrc rcup
+
+# Current 
+npm install -g alks
+
+git config --global user.email "sanjiv.patel@coxautoinc.com"
+git config --global user.name "Sanjiv Patel"
+
+cd 
+mkdir -p projects
+mkdir -p scripts
+mkdir -p .ssh
+
+#Need one drive setup before proceeding.
+#echo "zelda pw"
+cd .ssh
+unzip /Users/sanjiv.patel/Library/CloudStorage/OneDrive-CoxAutomotive/scripts/keys.zip -d ~/.ssh
+chmod 600 id_rsa* 
+
+cd projects
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-Accelerated-Title.git
+git clone git@ghe.coxautoinc.com:CMS-Deployments/CMS-Accelerated-Title-controlled-deployment.git
+git clone git@ghe.coxautoinc.com:CMS-AT/title_api3_partner_profile_import.git
+#TODO list the rest
+
+pyenv install 3.9.7
+
+chmod +x setup_backup_cron.sh
+./setup_backup_cron.sh

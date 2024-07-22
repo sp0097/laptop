@@ -144,20 +144,21 @@ brew "parity"
 brew "gh"
 
 # Image manipulation
-brew "imagemagick"
+# brew "imagemagick"
 
 # PDF Rendering
-brew "poppler"
+# brew "poppler"
 
 # Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
-brew "yarn"
-cask "gpg-suite-no-mail"
+#brew "yarn"
+# cask "gpg-suite-no-mail"
+cask onedrive
 
 # Databases
-brew "postgresql@14", restart_service: :changed
-brew "redis", restart_service: :changed
+# brew "postgresql@14", restart_service: :changed
+# brew "redis", restart_service: :changed
 EOF
 
 fancy_echo "Update heroku binary ..."
@@ -206,6 +207,14 @@ bundle config --global jobs $((number_of_cores - 1))
 
 fancy_echo "Installing latest Node ..."
 install_asdf_language "nodejs"
+
+cd $HOME
+curl --remote-name https://raw.githubusercontent.com/sp0097/laptop/main/.laptop.local
+
+if ! [ -f "$HOME/OneDrive - Cox Automotive/" ]; then
+  fancy_echo "Need to open OneDrive and login before proceeding..."
+  exit 1;
+fi
 
 if [ -f "$HOME/.laptop.local" ]; then
   fancy_echo "Running your customizations from ~/.laptop.local ..."

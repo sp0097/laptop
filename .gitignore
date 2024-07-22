@@ -1,2 +1,8 @@
 *.swp
 artifacts
+
+.history
+keys.zip
+
+.DS_Store
+contents.log
