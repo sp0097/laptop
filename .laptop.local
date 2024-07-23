@@ -6,34 +6,37 @@ fancy_echo "------- Some dependencies not managed with laptop -----------------"
 fancy_echo " * Sound Siphon"
 
 #oh my zsh
-sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+fi
 
 # install Apps From App Store
 # mas search '<application name here>' | awk '{ print $1 }' | xargs mas install
+#Re-enabled later
 mas install 492167985 # menubarclock
 mas install 803453959 # slack
-mas install 595191960 # Copy clip
+mas install 405843582 #alfred
 
 # upgrade existing apps
 mas upgrade
 
 # bring in or pull from Thoughtbot's dotfiles
-if [ ! -d "$HOME/dotfiles" ]; then
-  git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
-else
-  git -C ~/dotfiles pull origin master
-fi
+# if [ ! -d "$HOME/dotfiles" ]; then
+#   git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+# else
+#   git -C ~/dotfiles pull origin master
+# fi
 
 # brings in my personal dotfile prefernces
 # and keeps them current
-if [ ! -d "$HOME/dotfiles" ]; then
-  git clone git@github.com:jedschneider/dotfiles-local.git ~/dotfiles-local
-else
-  git -C ~/dotfiles-local pull origin master
-fi
+# if [ ! -d "$HOME/dotfiles" ]; then
+#   git clone git@github.com:jedschneider/dotfiles-local.git ~/dotfiles-local
+# else
+#   git -C ~/dotfiles-local pull origin master
+# fi
 
-# source dotfiles
-env RCRC=$HOME/dotfiles/rcrc rcup
+# # source dotfiles
+# env RCRC=$HOME/dotfiles/rcrc rcup
 
 # Current 
 npm install -g alks
@@ -54,18 +57,40 @@ brew install --cask "flameshot" || true
 brew install --cask "macvim" || true
 brew install --cask "iterm2" || true
 brew install --cask "spotify" || true
+brew install --cask thunderbird || true
 
-#Need one drive setup before proceeding.
-#echo "zelda pw"
+echo "zelda pw"
 cd .ssh
 unzip /Users/sanjiv.patel/Library/CloudStorage/OneDrive-CoxAutomotive/scripts/keys.zip -d ~/.ssh
 chmod 600 id_rsa* 
 
+cd
 cd projects
-git clone git@ghe.coxautoinc.com:CMS-AT/CMS-Accelerated-Title.git
-git clone git@ghe.coxautoinc.com:CMS-Deployments/CMS-Accelerated-Title-controlled-deployment.git
-git clone git@ghe.coxautoinc.com:CMS-AT/title_api3_partner_profile_import.git
-#TODO list the rest
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-Accelerated-Title.git || true
+git clone git@ghe.coxautoinc.com:CMS-Deployments/CMS-Accelerated-Title-controlled-deployment.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/title_api3_partner_profile_import.git || true
+git clone git@ghe.coxautoinc.com:CMS-Deployments/CMS-Accelerated-Title-controlled-deployment.git || true
+git clone git@ghe.coxautoinc.com:CMS-Deployments/cms-at-admin-ui-controlled-deployment.git || true
+git clone git@ghe.coxautoinc.com:CMS-Deployments/CMS-AT-ACH-API-controlled-deployment.git || true
+git clone git@ghe.coxautoinc.com:CMS-Deployments/CMS-DocStore-API-controlled-deployment.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/mute-alerts.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/dt.git || true
+git clone ggit@ghe.coxautoinc.com:CMS-AT/fni-apiconnect.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-PQ-API-Front.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/xcap2-jenkins-seeds.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-TitleAPI.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-DocStore-API.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/apisandbox-healthcheck.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/aws-secrets.git || true
+git clone git@ghe.coxautoinc.com:CMS-CMS-AT/CMS-PQ-Data-API.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-AT-ACH-API.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-AT-Oracle-RDS.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/pq-jenkins-seeds.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/CMS-Accelerated-Title-Seeds.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/alb-demo-server-setup.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/team-server-base-image.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/aws-team-server-scripts.git || true
+git clone git@ghe.coxautoinc.com:CMS-AT/pounder.git || true
 
 pyenv install 3.9.7
 
