@@ -58,6 +58,7 @@ brew install --cask "macvim" || true
 brew install --cask "iterm2" || true
 brew install --cask "spotify" || true
 brew install --cask thunderbird || true
+brew install openapi-generator || true
 
 echo "zelda pw"
 cd .ssh
@@ -91,6 +92,12 @@ git clone git@ghe.coxautoinc.com:CMS-AT/alb-demo-server-setup.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/team-server-base-image.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/aws-team-server-scripts.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/pounder.git || true
+
+
+cd 
+cd scripts
+#ollama setup
+curl -fsSL https://ollama.com/install.sh | sh
 
 pyenv install 3.9.7
 

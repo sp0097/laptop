@@ -15,7 +15,11 @@ exclude_dirs=(
     ".cache"
     ".pyenv"
     ".local"
-    ".vscode"  # Added .vscode to the exclusion list
+    ".vscode"
+    ".asdf"
+    ".gradle"
+    ".ollama"
+    ".sonarlint" # Added .vscode to the exclusion list
 )
 
 # Build the exclude options for tar
