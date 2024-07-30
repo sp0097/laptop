@@ -15,28 +15,10 @@ fi
 #Re-enabled later
 mas install 492167985 # menubarclock
 mas install 803453959 # slack
-mas install 405843582 #alfred
+mas install 405843582 # alfred
 
 # upgrade existing apps
 mas upgrade
-
-# bring in or pull from Thoughtbot's dotfiles
-# if [ ! -d "$HOME/dotfiles" ]; then
-#   git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
-# else
-#   git -C ~/dotfiles pull origin master
-# fi
-
-# brings in my personal dotfile prefernces
-# and keeps them current
-# if [ ! -d "$HOME/dotfiles" ]; then
-#   git clone git@github.com:jedschneider/dotfiles-local.git ~/dotfiles-local
-# else
-#   git -C ~/dotfiles-local pull origin master
-# fi
-
-# # source dotfiles
-# env RCRC=$HOME/dotfiles/rcrc rcup
 
 # Current 
 npm install -g alks
@@ -59,6 +41,9 @@ brew install --cask "iterm2" || true
 brew install --cask "spotify" || true
 brew install --cask thunderbird || true
 brew install openapi-generator || true
+brew install cookiecutter || true
+brew install poetry || true
+brew install docker-compose || true
 
 echo "zelda pw"
 cd .ssh
@@ -92,7 +77,7 @@ git clone git@ghe.coxautoinc.com:CMS-AT/alb-demo-server-setup.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/team-server-base-image.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/aws-team-server-scripts.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/pounder.git || true
-
+git clone git@ghe.coxautoinc.com:CMS-AT/db-extra-data.git || true
 
 cd 
 cd scripts
