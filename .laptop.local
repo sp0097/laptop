@@ -78,7 +78,7 @@ git clone git@ghe.coxautoinc.com:CMS-AT/team-server-base-image.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/aws-team-server-scripts.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/pounder.git || true
 git clone git@ghe.coxautoinc.com:CMS-AT/db-extra-data.git || true
-
+git clone git@ghe.coxautoinc.com:CMS-AT/fni-apiconnect.git || true
 cd 
 cd scripts
 #ollama setup
@@ -90,3 +90,15 @@ chmod +x setup_backup_cron.sh
 ./setup_backup_cron.sh
 
 fancy_echo "Setup AlDente Pro manually => https://apphousekitchen.com/installation-guide/"
+
+#Setup SSM Manager plugin
+cd /tmp
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac_arm64/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+unzip sessionmanager-bundle.zip
+sudo /usr/local/bin/python3.8 sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+
+ollama pull codellama:code
+brew install go
+go install github.com/bernardo-bruning/ollama-copilot@latest
+#https://github.com/bernardo-bruning/ollama-copilot
+

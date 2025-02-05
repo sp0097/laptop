@@ -24,6 +24,7 @@ exclude_dirs=(
     ".sonarlint" 
     ".cookiecutter"
     ".docker"
+    ".cursor"
 )
 
 # Build the exclude options for tar
