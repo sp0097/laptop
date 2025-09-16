@@ -47,7 +47,7 @@ brew install docker-compose || true
 
 echo "zelda pw"
 cd .ssh
-unzip /Users/sanjiv.patel/Library/CloudStorage/OneDrive-CoxAutomotive/scripts/keys.zip -d ~/.ssh
+unzip /Users/sanjiv.patel/Documents/keys.zip -d ~/.ssh
 chmod 600 id_rsa* 
 
 cd
